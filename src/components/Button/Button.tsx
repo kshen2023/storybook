@@ -28,7 +28,7 @@ const StyledButton = styled.button<ButtonProps>`
   display: ${({ hidden }) => (hidden ? "none" : "block")};
   &:hover {
     background: ${({ disabled }) =>
-      disabled ? null : "linear-gradient(to bottom, #2aaaff, #8dc5f9)"};
+    disabled ? null : "linear-gradient(to bottom, #2aaaff, #8dc5f9)"};
   }
 `;
 
@@ -53,3 +53,6 @@ export const Button = ({
     </StyledButton>
   );
 };
+export function sum(a: number, b: number) {
+  return a + b;
+}
