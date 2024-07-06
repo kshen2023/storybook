@@ -3,7 +3,7 @@ import { getDisplayStyle } from "./Button.lib";
 import { getOpacityStyle } from "./Button.lib";
 
 test("getDisplayStyle returns 'none' when the button is hidden", () => {
-    const result = getDisplayStyle(true);
+    const result = getDisplayStyle(false);
     expect(result).toBe("none");
 });
 
