@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { ButtonProps } from "./Button.types";
+import { getDisplayStyle } from "./Button.lib";
+import { getOpacityStyle } from "./Button.lib";
 
 const StyledButton = styled.button<ButtonProps>`
   color: ${({ textColor }) => textColor || "#000"};
@@ -21,11 +23,11 @@ const StyledButton = styled.button<ButtonProps>`
     }
   }};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  opacity: ${({ disabled }) => (disabled ? "0.5" : "1")};
+  opacity: ${({ disabled = false }) => getOpacityStyle(disabled)};
   text-transform: uppercase;
   font-family: Arial, sans-serif;
   font-weight: bold;
-  display: ${({ hidden }) => (hidden ? "none" : "block")};
+  display: ${({ hidden = false }) => getDisplayStyle(hidden)};
   &:hover {
     background: ${({ disabled }) =>
     disabled ? null : "linear-gradient(to bottom, #2aaaff, #8dc5f9)"};
@@ -53,6 +55,4 @@ export const Button = ({
     </StyledButton>
   );
 };
-export function sum(a: number, b: number) {
-  return a + b;
-}
+

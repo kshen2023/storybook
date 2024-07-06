@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import { LinkProps } from "./Links.types";
+import {
+  getCursorStyle,
+  getVisibilityStyle,
+} from "./Links.lib";
 
 export const Links = styled.a<LinkProps>`
   font-family: "Montserrat", sans-serif;
@@ -8,13 +12,13 @@ export const Links = styled.a<LinkProps>`
   background-color: ${({ bgColor }) => bgColor || "transparent"};
   opacity: ${(props) => (props.disabled ? "0.5" : "1")};
   background-color: ${(props) => props.bgColor};
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "default")};
-  visibility: ${({ hidden }) => (hidden ? "hidden" : "visible")};
+  cursor: ${({ disabled }) => getCursorStyle(disabled)};
+  visibility: ${({ hidden }) => getVisibilityStyle(hidden)};
   text-decoration: none;
 
   &:hover {
     color: ${({ disabled, color }) =>
-      !disabled ? color || "#3b8026" : "grey"};
+    !disabled ? color || "#3b8026" : "grey"};
   }
   font-weight: ${({ bold }) => (bold ? "bold" : "normal")};
 `;
